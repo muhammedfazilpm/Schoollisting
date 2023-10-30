@@ -102,10 +102,8 @@ function Form() {
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       if (mode) {
-        // If in edit mode, update the edit object
         setEdit({ ...edit, image: e.target.files[0] });
       } else {
-        // If not in edit mode, update the data object
         setData({ ...data, image: e.target.files[0] });
       }
     }
