@@ -18,6 +18,7 @@ function Dashboard() {
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState(1);
+  const[pages,setpages]=useState(1)
   const baseUrl = "http://localhost:5000/api/school/";
 
   const [list, setList] = useState<ListItem[]>([]);
@@ -36,6 +37,7 @@ function Dashboard() {
       if (responce.data.success) {
         console.log(responce.data.lists);
         setList(responce.data.lists);
+        setpages(responce.data.pages)
       } else {
         toast.error(responce.data.message);
       }
@@ -229,28 +231,20 @@ function Dashboard() {
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-12">
-              <ul className="pagination pagination-lg text-center">
-                <li className="page-item">
-                  <a
-                    className="page-link bg-success text-light"
-                    onClick={() => setPage(1)}
-                  >
-                    1
-                  </a>
-                </li>
-                <li onClick={(e) => setPage(2)} className="page-item">
-                  <a className="page-link bg-success text-light">2</a>
-                </li>
-                <li onClick={(e) => setPage(3)} className="page-item">
-                  <a className="page-link bg-success text-light">3</a>
-                </li>
-                <li onClick={(e) => setPage(4)} className="page-item">
-                  <a className="page-link bg-success text-light">4</a>
-                </li>
-                <li onClick={(e) => setPage(5)} className="page-item">
-                  <a className="page-link bg-success text-light">5</a>
-                </li>
-              </ul>
+
+            <ul className="pagination pagination-lg text-center">
+  {Array.from({ length: pages }, (_, i) => (
+   
+    <li className="page-item">
+    <a
+      className="page-link bg-success text-light"
+      onClick={() => setPage(i+1)}
+    >
+     { i+1}
+    </a>
+  </li>
+  ))}
+</ul>
             </div>
           </div>
         </div>

@@ -45,7 +45,10 @@ const addDetails = async (req, res) => {
 const getList = async (req, res) => {
   let sort = req.query.sort;
   let lists;
+
   try {
+    const count=await School.countDocuments()
+    let pages=Math.ceil(count/3)
     if (req.query.search.length === 0) {
       const page = parseInt(req.query.page);
       const perPage = 3;
@@ -63,7 +66,7 @@ const getList = async (req, res) => {
     }
 
     if (lists) {
-      res.status(200).send({ success: true, lists: lists });
+      res.status(200).send({ success: true, lists: lists,pages:pages });
     } else {
       res
         .status(400)
