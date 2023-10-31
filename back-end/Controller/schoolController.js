@@ -1,6 +1,6 @@
 const School = require("../Models/schoolModel");
 
-let id;
+
 const addDetails = async (req, res) => {
   try {
     const dataexist = await School.find({
