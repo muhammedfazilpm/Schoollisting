@@ -15,7 +15,7 @@ function View() {
 
   const getviewdata = async (id: string) => {
     try {
-      console.log("req", id);
+    
       const response = await axios.post('http://localhost:5000/api/school/view', { id });
       if (response.data.success) {
         setData(response.data.data);

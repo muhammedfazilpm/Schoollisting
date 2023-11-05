@@ -33,9 +33,8 @@ function Dashboard() {
         },
       });
 
-      console.log(responce);
+    
       if (responce.data.success) {
-        console.log(responce.data.lists);
         setList(responce.data.lists);
         setpages(responce.data.pages)
       } else {
