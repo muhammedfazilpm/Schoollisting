@@ -26,9 +26,9 @@ const addDetails = async (req, res) => {
       description: req.body.description,
       image: req.file.filename,
     });
-    const added = await newSchool.save();
+    const add = await newSchool.save();
 
-    if (added) {
+    if (add) {
       return res
         .status(200)
         .send({ message: "New school added", success: true });
