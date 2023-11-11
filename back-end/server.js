@@ -16,5 +16,5 @@ app.use("/api/school/", schoolRoutes);
 app.use("/icons", express.static("./File"));
 
 app.listen(port, () => {
-  console.log("server started...",port);
+  console.log("server started..");
 });
