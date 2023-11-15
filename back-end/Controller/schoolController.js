@@ -147,7 +147,7 @@ const postEdit = async (req, res) => {
   if (update) {
     res
       .status(200)
-      .send({ success: true, message: "Data updated" });
+      .send({ success: true, message: "Datas updated" });
   }
 };
 
