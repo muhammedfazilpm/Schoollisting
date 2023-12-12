@@ -29,5 +29,5 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          cd path/to/back-end
+          cd Schoollisting/back-end/
           npm install
