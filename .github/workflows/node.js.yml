@@ -31,3 +31,8 @@ jobs:
         run: |
           cd Schoollisting/back-end/
           npm install
+
+      - name: Debug
+        run: |
+          ls -R $GITHUB_WORKSPACE
+          ls -R /home/ubuntu/actions-runner-backendserver/_work/Schoollisting/Schoollisting
