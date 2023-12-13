@@ -1,0 +1,38 @@
+name: Node.js CI/CD
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: self-hosted
+    strategy:
+      matrix:
+        node-version: [18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Create .env file
+        run: echo "${{ secrets.PROD_ENV_FILE }}" > .env
+
+      - name: Install Dependencies
+        run: |
+          cd Schoollisting/back-end/
+          npm install
+
+      - name: Debug
+        run: |
+          ls -R $GITHUB_WORKSPACE
+          ls -R /home/ubuntu/actions-runner-backendserver/_work/Schoollisting/Schoollisting
