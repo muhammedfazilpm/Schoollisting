@@ -12,6 +12,11 @@ require("dotenv").config();
 const schoolRoutes = require("./Router/Schoolroutes");
 
 app.use("/api/school/", schoolRoutes);
+app.use("/api/user/",(req,res)=>{
+  return res.status(200).json({
+    message:"change feature added"
+  })
+})
 
 app.use("/icons", express.static("./File"));
 

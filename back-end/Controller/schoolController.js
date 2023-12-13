@@ -2,21 +2,22 @@ const School = require("../Models/schoolModel");
 
 
 const addDetails = async (req, res) => {
+  
   try {
-    const dataexist = await School.find({
-      $and: [
-        { name: { $regex: new RegExp(req.body.name, "i") } },
-        { place: { $regex: new RegExp(req.body.place, "i") } },
-        { state: { $regex: new RegExp(req.body.state, "i") } },
-        { district: { $regex: new RegExp(req.body.district, "i") } },
-      ],
-    });
+    // const dataexist = await School.find({
+    //   $and: [
+    //     { name: { $regex: new RegExp(req.body.name, "i") } },
+    //     { place: { $regex: new RegExp(req.body.place, "i") } },
+    //     { state: { $regex: new RegExp(req.body.state, "i") } },
+    //     { district: { $regex: new RegExp(req.body.district, "i") } },
+    //   ],
+    // });
 
-    if (dataexist.length != 0) {
-      return res
-        .status(200)
-        .send({ message: "school already exist", success: false });
-    }
+    // if (dataexist.length != 0) {
+    //   return res
+    //     .status(200)
+    //     .send({ message: "school already exist", success: false });
+    // }
 
     const newSchool = new School({
       name: req.body.name,
@@ -38,6 +39,7 @@ const addDetails = async (req, res) => {
         .send({ message: "check the details again", success: false });
     }
   } catch (error) {
+    console.log(error)
     res.status(500).send({});
   }
 };

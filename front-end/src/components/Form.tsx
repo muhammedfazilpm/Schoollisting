@@ -95,6 +95,7 @@ function Form() {
         }
       }
     } catch (error) {
+      
       toast.error('Check the details properly');
     }
   };
