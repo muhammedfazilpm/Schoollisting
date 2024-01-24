@@ -21,5 +21,5 @@ app.use("/api/user/",(req,res)=>{
 app.use("/icons", express.static("./File"));
 
 app.listen(port, () => {
-  console.log("server starting..");
+  console.log("server starting at..");
 });
